@@ -1,30 +1,39 @@
+class Node{
+  constructor(value)
+  {
+    this.value = value
+    this.next = null
+  }
+}
 class LinkedList 
 {
   constructor(value)
   {
     this.head = {
       value: value,
-      next:null
+      next: null
     } 
     this.tail = this.head
   }
   
   append(value)
   {
-    const newNode = {
-      value:value,
-      next:null
-    }
+    const newNode = new Node(value)
     this.tail.next = newNode
     this.tail = newNode
+  }
+  prepand(value)
+  {
+    const newNode = new Node(value)
+    newNode.next = this.head
+    this.head = newNode
   }
   
 }
 
 const myLinkedList = new LinkedList(10)
 
-console.log(myLinkedList)
 myLinkedList.append(5)
-console.log(myLinkedList)
 myLinkedList.append(16)
-console.log("2", myLinkedList)
+myLinkedList.prepand(1)
+console.log("1", myLinkedList)
