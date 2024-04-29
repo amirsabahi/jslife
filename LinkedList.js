@@ -2,7 +2,7 @@ class Node{
   constructor(value)
   {
     this.value = value
-    this.next=null
+    this.next = null
   }
 }
 class LinkedList 
@@ -11,12 +11,22 @@ class LinkedList
   {
     this.head = {
       value: value,
-      next:null
+      next: null
     } 
     this.tail = this.head
     this.length = 0
   }
-  
+   traverse(index)
+  {
+    let counter = 0
+    let currentNode = this.head
+    while(counter !== index)
+      {
+        currentNode = currentNode.next
+        counter++
+      }
+    return currentNode  
+  }
   append(value)
   {
     const newNode = new Node(value)
@@ -66,6 +76,18 @@ class LinkedList
         currentNode = currentNode.next
     }
   }
+  
+  remove(index) 
+  {
+    let currentNode = this.head
+    let currentIndex = 0
+    let previous = null
+    currentNode = this.traverse(index-1)
+    let unwantedNode = currentNode.next
+    currentNode.next = unwantedNode.next
+    this.length--
+  }
+ 
 }
 
 const myLinkedList = new LinkedList(10)
@@ -75,4 +97,6 @@ myLinkedList.append(16)
 myLinkedList.prepand(1)
 myLinkedList.insert(2, 15)
 myLinkedList.insert(200, 200)
+myLinkedList.remove(5)
+
 myLinkedList.printList()
