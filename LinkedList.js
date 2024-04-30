@@ -88,6 +88,34 @@ class LinkedList
     this.length--
   }
  
+  //Refernce :https://youtu.be/Hj_rA0dhr2I?si=_2ARwxRiOvrYjGLa&t=3574
+  reverse()
+ {
+  let currentNode = this.head
+  let prev = null
+  
+  while(currentNode != null)
+    {
+        let next = currentNode.next
+        currentNode.next = prev
+        prev = currentNode
+        currentNode = next
+    } 
+    return prev
+ }
+
+ 
+ //Refernce :https://youtu.be/Hj_rA0dhr2I?si=_2ARwxRiOvrYjGLa&t=3574
+ reverseRecursive(head, prev = null)
+ {
+    if (head == null)
+    {
+      return prev
+    }
+    const next = head.next
+    head.next = prev
+    return this.reverseRecursive(next, head)
+ }
 }
 
 const myLinkedList = new LinkedList(10)
@@ -98,5 +126,6 @@ myLinkedList.prepand(1)
 myLinkedList.insert(2, 15)
 myLinkedList.insert(200, 200)
 myLinkedList.remove(5)
-
+myLinkedList.reverseRecursive()
 myLinkedList.printList()
+console.log(myLinkedList)
