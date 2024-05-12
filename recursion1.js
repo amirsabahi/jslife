@@ -1,3 +1,5 @@
+// Use recursion to traverse an array of numbers and arrays
+
 const array = [
     1,
     2,
